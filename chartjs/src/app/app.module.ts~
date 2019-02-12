@@ -1,0 +1,23 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ChartsModule } from 'ng2-charts';
+//import  * as CanvasJS from './canvasjs.min';
+import {  } from './input-data.service';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ChartsModule,
+    //CanvasJS
+  ],
+  providers: [ImputDataService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

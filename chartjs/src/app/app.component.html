@@ -1,0 +1,55 @@
+<div class="container">
+    <h2 class="text-center">Pie Chart</h2>
+    <canvas baseChart
+        [data]="pieData.values"
+        [labels]="pieData.labels" 
+        [chartType]="pieChartType" 
+        [options]="pieChartOptions" 
+        (chartHover)="chartHovered($event)" 
+        (chartClick)="chartClicked($event)">    
+    </canvas>
+
+    <div>
+        <p>click on a few pieces of pie of different categores to delete these categores from the line chart
+        </p>
+        <p id="dropOut">{{dropOutCategoryArrView}}</p>
+        <p>a repeating click returns one catgory, "Reset" - all deleting</p>
+        <p>
+            <button type="button" (click)="resetDefaultsParameters()">Reset</button>
+        </p>
+    </div>
+    <h2 class="text-center">Line Chart</h2>
+    <div>
+        <canvas baseChart 
+			[chartType]="chartType" 
+			[datasets]=lineData.values 
+			[labels]="lineData.labels" 
+			[colors]="chartColors" 
+			[options]="chartOptions" 
+			[legend]="true" >
+		</canvas>
+    </div>
+    <div>
+        <h4> Select Charts Parameters</h4><br>
+        <div>
+            <select class="btn btn-outline-primary" [(ngModel)]="selectedPCP" name="pieChartParametr">
+				<option value="" selected></option>
+				<option *ngFor="let param of pieChartParameters" [value]="param.value">
+					{{param.viewValue}}
+				</option>
+			</select>
+            <button type="button" (click)="setParameter()">Set Parameter</button>
+        </div><br>
+
+        <form #week_ref="ngForm" (ngSubmit)="onClickSubmit(week_ref.value)">
+            <p> Frst week_ref (1 <= number <= 53, default: 1) </p>
+            <input type="number" name="week_ref_F" placeholder="First Week" ngModel>
+            <br/>
+            <p> Last week_ref (1 <= number <= 53, default: 53 ) </p>
+            <input type="number" name="week_ref_L" placeholder="Last Week" ngModel>
+            <br/>
+            <br/>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</div>

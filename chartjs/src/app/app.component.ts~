@@ -1,0 +1,69 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent {
+  title = 'app_chartjs';
+  public pieChartLabels:string[] = ["Pending", "InProgress", "OnHold", "Complete", "Cancelled"];
+  public pieChartData:number[] = [21, 39, 10, 14, 16];
+  public pieChartType:string = 'pie';
+  public pieChartOptions:any = {'backgroundColor': [
+               "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+            ]}
+ 
+  // events on slice click
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+ // event on pie chart slice hover
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+}
+/*
+import { Component, OnInit } from '@angular/core';
+import  * as CanvasJS from 'canvasjs.min';
+//var CanvasJS = require('./canvasjs.min');
+ 
+@Component({
+	selector: 'app-root',
+	templateUrl: './app.component.html'
+})
+ 
+export class AppComponent implements OnInit {
+	ngOnInit() {
+	let chart = new CanvasJS.Chart("chartContainer", {
+		theme: "light2",
+		animationEnabled: true,
+		exportEnabled: true,
+		title:{
+			text: "Monthly Expense"
+		},
+		data: [{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+			indexLabel: "{name} - #percent%",
+			dataPoints: [
+				{ y: 450, name: "Food" },
+				{ y: 120, name: "Insurance" },
+				{ y: 300, name: "Traveling" },
+				{ y: 800, name: "Housing" },
+				{ y: 150, name: "Education" },
+				{ y: 150, name: "Shopping"},
+				{ y: 250, name: "Others" }
+			]
+		}]
+	});
+		
+	chart.render();
+    }
+}*/
